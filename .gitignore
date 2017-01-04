@@ -1,0 +1,21 @@
+# Package Files #
+*.jar
+*.war
+*.ear
+*.log
+ 
+# ignore Maven generated target folders
+/target
+ 
+# ignore eclipse files
+.project
+.classpath
+.settings
+.metadata
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+
