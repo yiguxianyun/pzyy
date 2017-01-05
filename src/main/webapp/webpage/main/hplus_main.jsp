@@ -165,7 +165,7 @@
             <a href="javascript:logout()" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe class="J_iframe" name="iframe0" width="100%" height="200px" src="loginController.do?hplushome" frameborder="0" data-id="loginController.do?hplushome" seamless></iframe>
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%"  src="loginController.do?hplushome" frameborder="0" data-id="loginController.do?hplushome" seamless></iframe>
         </div>
         <div class="footer">
             <div class="pull-right">&copy; <t:mutiLang langKey="system.version.number"/> <a href="http://www.jeecg.org/" target="_blank">jeecg</a>
