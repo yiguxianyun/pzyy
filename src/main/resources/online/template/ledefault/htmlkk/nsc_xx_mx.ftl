@@ -38,6 +38,7 @@ function createDataGrid${config_id}(){
 	var hx=window.parent.$("#h_x").val();
 	var hs=window.parent.$("#h_s").val();
 	var js=window.parent.$("#js").val();
+	js=="不指定"?js=0:{};
 	
 	$('#${config_id}List').datagrid(
 	{

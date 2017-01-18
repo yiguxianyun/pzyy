@@ -44,9 +44,7 @@ $(function(){
 	      change:function(){
 	    	  查询长轴泵();长轴泵法兰();
     	  }
-	}).focus(function(){
-        $(this).autocomplete("search");
-    });
+	}).focus(function(){$(this).autocomplete("search");});
 
 });
 

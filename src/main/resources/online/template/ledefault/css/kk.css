@@ -1,47 +1,101 @@
-.cjtable{ 
-	
-	table-layout:fixed;
-	border-collapse:collapse;
+@media print {
+	.Noprn{display:none;}
+	.A4{
+		width:210mm;
+		margin-left:550px;
+	}
+	.A4表头{
+		width:210mm;
+	}
+}
+@media screen {
+	.A4{
+		width:210mm;
+	}
+/* 	.A4表头{ */
+/* 		position:fixed; */
+/* 		width:210mm; */
+/* 		z-index:10; */
+/* 	} */
+}
+
+
+.标题{
+	font-size:17px;
+	font-weight:bold;
+	letter-spacing:50px;
 	text-align:center;
-	border: solid 1px #cbcbcb;
-	font-size: 18px;
-			
-} 
-.cjtd{
-
-//   word-break:break-all;
-   height:40px;
-   padding-top:0px;
-   padding-bottom:0px;
-   margin:0 0;	
-   vertical-align:center;
+	margin:5px 0px 0px;
+	color: #008000;
 }
-.selectClass{
-		
- //  border:1px solid green;
-   background-color:green;
-		   
+.标题1{
+	font-size:17px;
+	font-weight:bold;
+	letter-spacing:0px;
+	text-align:center;
+	margin:5px 0px 0px;
+	color: #008000;
 }
-.zhidu{ 	
-	background-color:#dddddd;			
+  .ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    /* 防止水平滚动条 */
+    overflow-x: hidden;
+  }
+.kkinput-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
 }
-
-.kkform-control {
-  display: block;
-  width: 100%;
-  height: 80px;
-  padding: 60px 1px;
-  margin:0px 0px;
-  font-size: 12px;
-  line-height: 1.42857143;
+.kkinput-group-addon {
+  display: table-cell;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+  
+  padding: 2px 2px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
   color: #555555;
-  background-color: #ffffff;
-  background-image: none;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  text-align: center;
+  background-color: #eeeeee;
 }
+/* li 不换行，宽度根据内容自适应，通过 float 实现 */
+.ul_one {list-style:decimal;margin: 0px;padding: 0px;list-style-position:inside}
+.ul_one li {float: left;margin: 0px 20px 2px 20px;word-break:break-all; }
+
+/* li 不换行，宽度固定 */
+.ul_two {list-style: decimal;margin: 0px;padding: 0px;}
+.ul_two li {float: left;width: 100px;margin: 0px 20px 10px 0px;background-color: #ccd;overflow: hidden; line-height:1.6em;}
+
+/* li 不换行，宽度根据内容自适应，通过 display:inline 实现 */
+.ul_three {;margin: 0px;padding: 0px;}
+.ul_three li {;background-color: #ccd;margin: 0px 20px 10px 0px;}
+
+.clear {clear: both;}
+
+input,select{
+  color:#00f;
+}
+.次要按钮{
+	background-color:#7698b5;
+}
+.隔开{
+	margin-left:15px;
+}
+.靠右{
+	float:right;
+	margin-right:15px;
+}
+.白背景{
+	background-color:#fff;
+}
+
+
+
+
+
+
+
+

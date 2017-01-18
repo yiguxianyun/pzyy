@@ -129,7 +129,7 @@
 				                    }
 				            ">
 						<#elseif po.show_type=='text'>
-							<@kk.ifTextZhuBiao po data tableName/>
+							<@kk.ifTextZhuBiao po/>
 							
 						<#elseif po.show_type=='password'>
 							<input id="${po.field_name}" ${po.extend_json?if_exists} name="${po.field_name}"  type="password"

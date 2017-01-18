@@ -1,3 +1,4 @@
+<div class="con-wrapper" id="con-wrapper${sub_index}" style="display: none;">
 <div class="" style="text-align: center; margin:10px">
 	<div class="col-xs-1">
 		<b>K</b>
@@ -50,12 +51,11 @@
 		<input id="qieZJ" type="text" class="form-control text-center"  value="" >
 		<b>切割后效率</b>
 		<input id="qieXL" type="text" class="form-control text-center"  value="" >
-	</div>
-
-	
+	</div>	
 	<div class="col-xs-2 col-xs-offset-1" style="clear:both;">
 		<textarea id="ceshisj"  class="form-control" rows="2" placeholder="在这里粘贴两个测试点数据，或者在上方单个输入！"></textarea>
 	</div>	
+</div>
 </div>
 <script type="text/javascript">
 $(function(){
@@ -96,21 +96,20 @@ function jisuanQGD(){
 	$("#qieXL").val(qieXL.toFixed(1));
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

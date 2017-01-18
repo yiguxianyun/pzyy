@@ -1,6 +1,5 @@
 <script type="text/javascript">
 $(document).ready(function(){
-	var 对象=找对象();
 	$("b:contains('电机价格：')").after('<input type="button" value="新电机"  id="xindj" class="nav-tabs  ui_state_highlight"\
 			style="line-height:25px;height: 23px;margin-left: 10px;" onclick="tanchuang()"/>');
 	
@@ -67,15 +66,12 @@ function 设置只读(){
 	$.zhidu(对象);
 }
 function jsPTGL() {
-	var 对象=找对象();
  	var glyl=对象['glyl'].val(),zgl=$("#zgl").val();
  	var jsptgl=zgl*glyl;
  	对象['jsptgl'].val(jsptgl.toFixed(1));
  	cxDJCJ(对象);
  }
-
- //kk查询电机厂家
-function cxDJCJ(对象){	
+function cxDJCJ(对象){	 //kk查询电机厂家
 		var arr1 = [对象['djcj'],对象['xl'],对象['ip'],对象['dy'],对象['djxh'],对象['ptgl'],对象['yc_pl'],对象['yc_ly'],对象['yc_dj'],];
 		$.each(arr1, function(){
 			this.empty();
@@ -84,20 +80,24 @@ function cxDJCJ(对象){
 		
 		var jsptgl= $(document.getElementById('nsc_sj_dj[0].jsptgl')).val();
 		var djjs=$("#djjs").val();
-		$.post("选型报价.do?cxDJCJ",
-				{动作:"查厂家",jsptgl:jsptgl,djjs:djjs},
-			function(data){		
-				data = $.parseJSON(data);
+		$.ajax({  
+	        type : "post",  
+	        url : "选型报价.do?cxDJCJ",  
+	        data : {动作:"查厂家",jsptgl:jsptgl,djjs:djjs},  
+	        async : false,  
+	        success : function(data){  
+	        	data = $.parseJSON(data);
 				var objCJ= document.getElementById('nsc_sj_dj[0].djcj');
 				for(var k = 0;k<data.length;k++){		            
 					var cj=data[k]["厂家"];
 					$(objCJ).append("<option value='"+cj+"'>"+cj+"</option>"); 
 		        }
-				$(objCJ).val('南阳防爆');				
-			cxXL(对象);
-			});
+				var a=数据表['原动机厂家'];
+				a==null?$(objCJ).val('南阳防爆'):$(objCJ).val(a);				
+			cxXL(对象); 	
+	        }  
+		});
 }
-
 function cxXL(对象){
 	var arr1 = [对象['xl'],对象['ip'],对象['dy'],对象['djxh'],对象['ptgl'],对象['yc_pl'],对象['yc_ly'],对象['yc_dj'],];
 	$.each(arr1, function(){

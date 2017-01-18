@@ -28,7 +28,7 @@ function createDataGrid${config_id}(){
 	idField: 'id', <#if config_istree=="Y">treeField:"${tree_fieldname}",</#if>
 	title: '${config_name}',
 	fit:true,
-	fitColumns:true,
+	fitColumns:false,
 	striped:true,
 	autoRowHeight: true,
 	pageSize: 10,
@@ -400,8 +400,8 @@ function createDataGrid${config_id}(){
 	<a  id="update" href="javascript:void(0)"  class="easyui-linkbutton" plain="true"  icon="icon-edit" onclick="${config_id}updatekk()">编辑</a>
 	<a id="delete" href="javascript:void(0)" class="easyui-linkbutton" plain="true"  icon="icon-remove" onclick="${config_id}delBatch()">批量删除</a>
 	<a id="detail" href="javascript:void(0)" class="easyui-linkbutton" plain="true"  icon="icon-search" onclick="${config_id}view()">查看</a>
-	<a id="import" href="javascript:void(0)"  class="easyui-linkbutton" plain="true"  icon="icon-put" onclick="add('${config_name}Excel数据导入','excelTempletController.do?goImplXls&tableName=${config_id}','${config_id}List')">Excel数据导入</a>
-	<a id="excel" href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="${config_id}ExportExcel()"  icon="icon-putout">Excel导出</a>
+<!-- 	<a id="import" href="javascript:void(0)"  class="easyui-linkbutton" plain="true"  icon="icon-put" onclick="add('${config_name}Excel数据导入','excelTempletController.do?goImplXls&tableName=${config_id}','${config_id}List')">Excel数据导入</a> -->
+<!-- 	<a id="excel" href="javascript:void(0)" class="easyui-linkbutton" plain="true" onclick="${config_id}ExportExcel()"  icon="icon-putout">Excel导出</a> -->
 	
 	<#list config_buttons as x>
 		<#if x['buttonStyle'] == 'button' && x['buttonStatus']=='1'>

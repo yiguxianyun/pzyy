@@ -66,35 +66,14 @@
   </style>
   <script>
 $(function() {
-	  function pinyZH(term) {
-		  if (!/[\u4e00-\u9fa5]/g.test(term)){
-			  var arr = { "n": "南", "j": "佳", "x": "湘", "d": "德" };
-			  $.each(arr, function (key, value) { 
-				  if (term==key) {term = value}
-			  });
-		  }		 
-  		return term;  
-	  }
-	  
-	  $( "#厂家" ).autocomplete({
-      source: function( request, response ) {    	  
-    	  $.post("选型报价.do?chaxunDJ",
-  				{term: pinyZH(request.term),动作:"查厂家"},
-  			function(data){
-  					data = $.parseJSON(data);
-  					response( $.map( data, function( item ) {
-  		            	return {label: item.厂家,value: item.厂家 }
-  		            }));
-  			});          
-        },
-        minLength: 0,
-    });
-	  $("#功率,#ip,#电压,#频率,#型号,#系列").each(function(){
+	  $("#厂家,#功率,#ip,#电压,#频率,#型号,#系列").each(function(){
 		  var id=$(this).attr("id");
 		  $(this).autocomplete({
-		      source: function( request, response ) {    	  
+		      source: function( request, response ) {
+				  var 厂家=$("#厂家").val(),功率=$("#功率").val(),ip=$("#ip").val(),电压=$("#电压").val() 
+						,频率=$("#频率").val(),型号=$("#型号").val(),系列=$("#系列").val();
 		    	  $.post("选型报价.do?chaxunDJ",
-		  				{term: request.term,动作:"查"+id},
+		  				{term: request.term,动作:"查"+id,厂家:厂家,功率:功率,ip:ip,电压:电压,频率:频率,型号:型号,系列:系列},
 		  			function(data){
 		  					data = $.parseJSON(data);
 		  					response( $.map( data, function( item ) {
@@ -103,10 +82,8 @@ $(function() {
 		  			});          
 		        },
 		        minLength: 0
-		    });
-		  
-	    });
- 
+		    }).focus(function(){$(this).autocomplete("search");});		  
+	    }); 
     
   });
   </script> 
@@ -145,7 +122,7 @@ $(function() {
 			          	<#if head.isTree=='Y' && head.treeParentIdFieldName==po.field_name>
 							
 						<#elseif po.show_type=='text'>
-							<@kk.ifTextZhuBiao po data tableName/>
+							<@kk.ifTextZhuBiao po />
 							
 						<#elseif po.show_type=='password'>
 			

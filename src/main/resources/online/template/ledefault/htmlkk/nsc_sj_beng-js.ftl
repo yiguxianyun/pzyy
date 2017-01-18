@@ -66,9 +66,6 @@ function txJiaG() {
 	对象['z_bkzcjf'].val(z_bkzcjf);	
 	对象['z_bxl'].val(dataBJ['系列']);
 	对象['dz'].val(dataBJ['底座']);
-	var dzzj=对象['bjxs'].val()*dataBJ['底座'];
-	对象['dzzj'].val(dzzj);
-	
 	cxCJXS(对象['z_btcz'].val(),对象['z_bxl'].val(),对象['z_cjxs'],z_bkzcjf,对象['z_btj']);
 }
 //查询差价系数
@@ -99,6 +96,9 @@ function jsBZHJ() {
 	对象['sjfs'].val()=="分项计算"?对象['btzjz'].val(btzjzFS):对象['btzjz'].val(对象['z_btj'].val());
 	对象['btzhj'].val("");
 	对象['btzhj'].val((对象['btzjz'].val()*对象['bjxs'].val()).toFixed());
+	
+	var dzzj=对象['bjxs'].val()*对象['dz'].val();
+	对象['dzzj'].val(dzzj);
 	cxDJLS();
 }
 //查询地脚螺栓
@@ -171,6 +171,7 @@ function jsFLXJ() {
 function jsBBFJG() {
 	var 对象=bbf找对象();
 	对象['bbfjg'].val("");
+		
 	var bbfjg=对象['btdj'].val()*1+对象['dzzj'].val()*1+对象['f_xj'].val()*1;
 	对象['bbfjg'].val(bbfjg.toFixed());
 
@@ -220,25 +221,29 @@ function 设置样式() {
 	});
 	
 	
-	
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  

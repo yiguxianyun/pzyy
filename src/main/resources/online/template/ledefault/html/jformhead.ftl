@@ -123,16 +123,7 @@
 				</@DictData>
 		               
 			<#elseif po.show_type=='list'>
-				<@DictData name="${po.dict_field?if_exists?html}" text="${po.dict_text?if_exists?html}" tablename="${po.dict_table?if_exists?html}" var="dataList">
-					<select id="${po.field_name}" ${po.extend_json?if_exists} class="form-control" name="${po.field_name}" <#if po.operationCodesReadOnly?if_exists>onfocus="this.defOpt=this.selectedIndex" onchange="this.selectedIndex=this.defOpt;"</#if><#if po.is_null != 'Y'>datatype="*"</#if> >
-						<#list dataList as dictdata> 
-						<option value="${dictdata.typecode?if_exists?html}" 
-						<#if dictdata.typecode?if_exists?html=="${data['${tableName}']['${po.field_name}']?if_exists?html}"> selected="selected" </#if>>
-							${dictdata.typename?if_exists?html}
-						</option> 
-						</#list> 
-					</select>
-				</@DictData>
+				<@kk.ifListZhuBiao po/>
 				
 			<#elseif po.show_type=='date'>
 				<input id="${po.field_name}" ${po.extend_json?if_exists} name="${po.field_name}" type="text"

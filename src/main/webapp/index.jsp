@@ -1,51 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* SIMPLE DEMO STYLES */
-    body {
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-    .container {
-      margin: 50px;
-      max-width: 700px;
-    }
-    .container img {
-      width: 100%;
-    }
-    .container .pull-left {
-      width: 55%;
-      float: left;
-      margin: 20px 20px 20px -80px;
-    }
-    @media (min-width: 750px) {
-      body {
-        font-size: 16px;
-        line-height: 1.6;
-      }
-      .container {
-        margin: 100px auto;
-      }
-    }
-  </style>
-  <link href="plug-in/zoom/css/zoom.css" rel="stylesheet"> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+	/* li 不换行，宽度根据内容自适应，通过 float 实现 */
+	.ul_one {list-style: none;margin: 0px;padding: 0px;}
+	.ul_one li {float: left;background-color: #ccd;margin: 0px 20px 10px 0px;}
+	
+	/* li 不换行，宽度固定 */
+	.ul_two {list-style: none;margin: 0px;padding: 0px;}
+	.ul_two li {float: left;width: 100px;margin: 0px 20px 10px 0px;background-color: #ccd;overflow: hidden; line-height:1.6em;}
+	
+	/* li 不换行，宽度根据内容自适应，通过 display:inline 实现 */
+	.ul_three {list-style: none;margin: 0px;padding: 0px;}
+	.ul_three li {display:inline;background-color: #ccd;margin: 0px 20px 10px 0px;}
+	
+	.clear {clear: both;}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Image Zoom</h1>
-
-    <img src="userfiles/images/NSC选型演示.gif" data-action="zoom">
-
-      <img src="userfiles/images/NSC选型演示.gif" data-action="zoom" class="pull-left">
- 
-
-  </div>
-      <script type="text/javascript" src="plug-in/jquery/jquery-1.8.3.js"></script>
-    <script src="plug-in/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>  
-  <script src="plug-in/zoom/js/zoom.js"></script>
+	<ul class="ul_one">
+		<li>1ssssssssssssssssssssssss</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+	</ul>
+	<div class="clear"></div>
+	<hr />
+	<ul class="ul_two">
+		<li>1ssssssssssssssssssssssss</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+	</ul>
+	<div class="clear"></div>
+	<hr />
+	<ul class="ul_three">
+		<li>1ssssssssssssssssssssssss</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+	</ul>
 </body>
 </html>
