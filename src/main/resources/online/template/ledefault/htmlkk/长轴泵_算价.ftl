@@ -8,7 +8,9 @@
   </style>
 <script type="text/javascript">
 $(function(){
+	对象=找对象();
 	对象_长轴泵=找对象_长轴泵();
+	数据表={};
 //kk如果是新建马上查询电机厂家
 	<#if id?if_exists?html == ''>
 		if ($.getUrlParam('bxh') != null) {	

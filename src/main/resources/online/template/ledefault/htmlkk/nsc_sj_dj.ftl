@@ -1,5 +1,5 @@
 <script type="text/javascript">
-$(document).ready(function(){
+$(function(){
 	$("b:contains('电机价格：')").after('<input type="button" value="新电机"  id="xindj" class="nav-tabs  ui_state_highlight"\
 			style="line-height:25px;height: 23px;margin-left: 10px;" onclick="tanchuang()"/>');
 	
