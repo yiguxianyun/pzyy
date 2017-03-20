@@ -19,6 +19,12 @@ $(function(){
 	$("#销售人员,#销售人员日期,#技术支持,#技术支持日期").css({"width":"50%",});	
 	只读();
 	
+	对象['原动机型号'].parent().hide();
+	对象['原动机型号'].insertAfter(对象['原动机厂家']);	
+	对象['电机极数'].parent().insertBefore(对象['电压或油箱'].parent());
+	
+	$("p:contains('材质要求')").after('<button type="button" class="btn btn-primary" onclick="常用材质()">常用材质</button>');
+	
 	$("#泵组类型").change(function(){
 		电或柴();
 	});
@@ -37,10 +43,10 @@ $(function(){
 	数据表编号();
 	转速计算(对象['电机极数'],对象['原动机转速']);
 	轴功率();
+	<#include "/online/template/00表单公用/填写销售和技术支持js.ftl">
 	</#if>
 	电或柴();
 
-	电机列表();
 	document.getElementById("NSC数据表_材质[0].材质特殊要求").oninput=function(){$.增高(event);};
 	材质列表();
 	
@@ -77,6 +83,7 @@ $(function(){
         		$(this).removeAttr("readonly").css({"background-color":"#eee"}):{};
 	    });
 	});
+
 	
 });
 function 找对象(){
@@ -117,12 +124,11 @@ function 隐藏按钮(){
 function 电或柴(){
 	var dian=对象['电压或油箱'].prev(),ip=对象['ip或材质'].prev(),qi=对象['启动或冷却方式'].prev(),jie=对象['接线盒'].prev()
 		,dhc=对象['电或柴价'].siblings("p");
-	对象['原动机厂家'].prev().text('原动机厂家/型号：');对象['原动机型号'].parent().hide();
+	对象['原动机厂家'].prev().text('原动机厂家/型号：');
 	对象['原动机厂家'].parent().css({"width":"45%"});对象['原动机厂家'].css({"width":"50%"});对象['原动机型号'].css({"width":"50%"});	
-	对象['原动机型号'].insertAfter(对象['原动机厂家']);	
 	if ($("#泵组类型").val().indexOf("柴")<0) {
-		对象['电压或油箱'].parent().css({"width":"12%"});对象['电机极数'].parent().css({"width":"15%"});		
-		对象['电机极数'].parent().insertBefore(对象['电压或油箱'].parent());
+		对象['电压或油箱'].parent().css({"width":"12%"});对象['电机极数'].parent().css({"width":"15%"});对象['电机极数'].parent().show();		
+		
 		dian.text('电压：');ip.text('防爆等级/防护等级：');qi.text('启动方式：');jie.text('接线盒进线方式/个数：');
 		jie.parent().show();
 // 		k=dhc.prop('tagName');
@@ -131,8 +137,13 @@ function 电或柴(){
 			转速计算(对象['电机极数'],对象['原动机转速']);
 		});
 		dhc.text('电机：');
+		电机列表();
+		对象['原动机转速'].zhidu();
 	}else{
+		电机列表清除();
 		对象['电机极数'].parent().hide();
+		对象['电压或油箱'].parent().css({"width":"25%"});
+		对象['原动机转速'].removeAttr("readonly").css({"background-color":"#eee"});
 		dian.text('油箱容量（L）：');ip.text('材质：');qi.text('冷却方式：');jie.parent().hide();dhc.text('柴油机：');
 	}
 }
@@ -165,6 +176,13 @@ function 电机列表(){
 		        },
 		        minLength: 0
 		    }).focus(function(){$(this).autocomplete("search");});		  
+	  }); 
+}
+function 电机列表清除(){
+	var dict={厂家:对象['原动机厂家'],电压:对象['电压或油箱'],ip:对象['ip或材质']};
+	$.each(dict, function(k,o){
+		  var id=k;
+		  o.autocomplete("destroy");		  
 	  }); 
 }
 function 材质列表(){
@@ -285,6 +303,27 @@ function 价格change(){
 		    	算价格();
 		});		
 	}); 
+}
+function 常用材质(){
+	$.dialog({
+		content: 'url:cgFormBuildController.do?goAddFtlForm&tableName=电机价格表&olstylecode=',
+		lock : true,
+		width:700,
+		height:400,
+		title:'电机价格表录入',
+		opacity : 0.3,
+		cache:false,
+	    ok: function(){
+	    	iW = this.iframe.contentWindow;
+	    	$('#btn_sub', iW.document).click();
+	    	var dianjiID=$("input[name='id']", iW.document).val();
+	    	$('#kk').val(dianjiID);
+	    	cxDJYID(dianjiID);
+	    },
+	    cancelVal: '关闭',
+	    cancel: true /*为true等价于function(){}*/
+	});
+
 }
 </script>
 

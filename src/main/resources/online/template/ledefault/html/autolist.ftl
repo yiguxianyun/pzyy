@@ -10,7 +10,7 @@ $(function(){
 	$.get("cgFormHeadController.do?checkIsExit&checkIsTableCreate&name=${config_id}",
 	function(data){
 		data = $.parseJSON(data);
-		if ((data.success)||(${config_id}="nsc_算价结果汇总")){
+		if ((data.success)||("${config_id}".lastIndexOf("汇总")>=0)||("${config_id}".lastIndexOf("视图")>=0)){
 			createDataGrid${config_id}();
 		}else{
 			alertTip('表:<span style="color:red;">${config_id}</span>还没有生成,请到表单配置生成表');

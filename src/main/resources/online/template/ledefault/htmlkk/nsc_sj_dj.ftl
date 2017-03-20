@@ -219,7 +219,8 @@ function 填写价格(对象){
 //价格相关
 function jsJiaG(对象){
 	对象['djjg'].val("");
-	(对象['dy'].val().toUpperCase().indexOf("380V"||"400V"||"660V")>=0)?
+	var dy=对象['dy'].val().toUpperCase();
+	(dy.indexOf("400V")>=0||dy.indexOf("380V")>=0||dy.indexOf("660V")>=0)?
 		对象['gdy'].val("低压"):对象['gdy'].val("高压");
 	var jg=对象['bzjg'].val()*对象['ipxs'].val()*对象['gyxs'].val()*对象['snwxs'].val()*
 			对象['lwsxs'].val()*对象['ydyxs'].val();

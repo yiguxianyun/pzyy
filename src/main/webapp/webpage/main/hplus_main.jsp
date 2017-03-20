@@ -76,7 +76,13 @@
     <div id="page-wrapper" class="gray-bg dashbard-1">
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header" style="height: 60px;"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                <div class="navbar-header" style="height: 60px;">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                <a id="待办轮询" class="minimalize-styl-2 " href="列表.do?list&id=待办任务视图" style="float:left;font-weight: bold">待办任务
+              	  <span id="待办轮询数量"  class="badge"
+              	  style="position: relative;left:-2px;top:-9px;background-color:red;color:white;"
+              	  ></span>
+                </a>
                     <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
 <!--                         <div class="form-group"> -->
 <!--                             <input type="text" placeholder="欢迎使用Jeecg快速开发平台 …" class="form-control" name="top-search" id="top-search"> -->
@@ -284,7 +290,7 @@
 
 <!-- 自定义js -->
 <script src="plug-in-ui/hplus/js/hplus.js?v=4.1.0"></script>
-<script type="text/javascript" src="plug-in-ui/hplus/js/contabs.js"></script>
+<script type="text/javascript" src="plug-in/kk/contabs.js"></script>
 <t:base type="tools"></t:base>
 <!-- 第三方插件 -->
 <script src="plug-in-ui/hplus/js/plugins/pace/pace.min.js"></script>

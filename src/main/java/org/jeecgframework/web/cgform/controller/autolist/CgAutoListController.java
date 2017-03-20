@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kk.controller.通用控制器;
+
 import org.jeecgframework.web.cgform.common.CgAutoListConstant;
 import org.jeecgframework.web.cgform.engine.FreemarkerHelper;
 import org.jeecgframework.web.cgform.entity.config.CgFormFieldEntity;
@@ -68,15 +70,19 @@ public class CgAutoListController extends BaseController{
 	@Autowired
 	private CgformTemplateServiceI cgformTemplateService;
 	private static Logger log = Logger.getLogger(CgAutoListController.class);
+	
+	@Autowired
+	private 通用控制器 通用控制器;
 	/**
 	 * 动态列表展现入口
 	 * @param id 动态配置ID
 	 * @param request
 	 * @param response
+	 * @throws Exception 
 	 */
 	@RequestMapping(params = "list")
 	public void list(String id, HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws Exception {
 		long start = System.currentTimeMillis();
 		//step.1 根据表名获取该表单的配置参数
 		String jversion = cgFormFieldService.getCgFormVersionByTableName(id);
@@ -99,9 +105,11 @@ public class CgAutoListController extends BaseController{
 		}
         paras.put("this_olstylecode",template);
 		CgformTemplateEntity entity=cgformTemplateService.findByCode(template);
-		String kk=TemplateUtil.getTempletPath(entity,0, TemplateUtil.TemplateType.LIST);
 		
-		String html = viewEngine.parseTemplate(TemplateUtil.getTempletPath(entity,0, TemplateUtil.TemplateType.LIST), paras);
+		String 角色=通用控制器.查用户("角色",request);
+		paras.put("角色",角色);
+		String kk=TemplateUtil.getTempletPath(entity,0, TemplateUtil.TemplateType.LIST);		
+		String html = viewEngine.parseTemplate(kk, paras);
 
 		PrintWriter writer = null;
 		try {
@@ -423,7 +431,7 @@ public class CgAutoListController extends BaseController{
 	 * @param paras
 	 * @param request
 	 */
-	private void loadIframeConfig(Map<String, Object> paras,
+	public void loadIframeConfig(Map<String, Object> paras,
 			HttpServletRequest request) {
 		HttpSession session = ContextHolderUtils.getSession();
 		String lang = (String)session.getAttribute("lang");

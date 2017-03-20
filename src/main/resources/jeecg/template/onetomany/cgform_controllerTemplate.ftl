@@ -327,7 +327,7 @@ public class ${entityName}Controller extends BaseController {
 		    <#if key?lower_case?index_of("${jeecg_table_id}")!=-1>
 		Object ${jeecg_table_id}${sub_index} = ${entityName?uncap_first}.get${jeecg_table_id?cap_first}();
 		    <#else>
-		Object ${key?uncap_first}${sub_index} = ${entityName?uncap_first}.get${key}();
+		Object ${key?uncap_first}${sub_index} = ${entityName?uncap_first}.getId();
 		    </#if>
 	    </#list>
 		//===================================================================================
@@ -372,7 +372,7 @@ public class ${entityName}Controller extends BaseController {
 				<#if key?lower_case?index_of("${jeecg_table_id}")!=-1>
             	    Object ${jeecg_table_id}${sub_index} = entity.get${jeecg_table_id?cap_first}();
 				<#else>
-           		    Object ${key?uncap_first}${sub_index} = entity.get${key}();
+           		    Object ${key?uncap_first}${sub_index} = entity.getId();
 				</#if>
 			</#list>
 				    String hql${sub_index} = "from ${sub.entityName}Entity where 1 = 1<#list sub.foreignKeys as key> AND ${key?uncap_first} = ? </#list>";

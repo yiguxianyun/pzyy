@@ -31,6 +31,7 @@ String langurl = basePath + "/plug-in/mutiLang/" + lang +".js";
 	margin-left: 0px;
 	margin-right: 0px;
 	width: auto;
+	padding-bottom: 500px;
 }
 
 #tab_div_database tr {

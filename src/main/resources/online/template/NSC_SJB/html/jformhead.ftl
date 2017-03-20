@@ -5,11 +5,16 @@
 	</#list>
 <div id="A4表头" class="A4表头">
 	<div class="Noprn 白背景">
-	<button type="button" id="btn_sub"  class="btn btn-primary 隔开">保存</button>
-	<button type="button" id="选型"  class="btn btn-primary 隔开">选型</button>
-	<button type="button" id="算价"  class="btn btn-primary 隔开 次要按钮">算价(省略选型)</button>
-	<button type="button" id=""  class="btn btn-primary 靠右 次要按钮" onclick=$.打印()>打印</button>
-	<button type="button" id="改只读"  class="btn btn-primary 靠右">改只读(可随意修改)</button>
+	<#include "/online/template/00表单公用/工作流.ftl">
+	<div style="clear:both;"></div>
+	<div style="clear:both;" id="工具栏">
+		<button type="button" id="btn_sub"  class="btn btn-primary 隔开">保存</button>
+		<button type="button" id="选型"  class="btn btn-primary 隔开">选型</button>
+		<button type="button" id="算价"  class="btn btn-primary 隔开 次要按钮">算价(省略选型)</button>
+		<button type="button" id="性能图"  class="btn btn-primary 隔开">性能图</button>
+		<button type="button" id=""  class="btn btn-primary 靠右 次要按钮" onclick=$.打印()>打印</button>
+		<button type="button" id="改只读"  class="btn btn-primary 靠右">改只读(可随意修改)</button>
+	</div>
 	</div>
 	<div class="row form-wrapper">
 		<div class="col-xs-3" >
@@ -20,22 +25,22 @@
 			<h4>湖南南方长河泵业有限公司</h4>
 		</div>
 		<div class="col-xs-5" >
-			<@kk.找主表字段 "数据表编号"/>
+			<@字段库.找主表字段 "数据表编号"/>
 			<div class="input-group">
-            <p class="input-group-addon">${kk.字段.content}：
+            <p class="input-group-addon">${字段库.字段.content}：
              	<a href="javascript:提取NSC价格()"><span class="glyphicon glyphicon-repeat"></span></a>
-            </p> <@kk.ifTextZhuBiao kk.字段 />
+            </p> <@字段库.ifTextZhuBiao 字段库.字段 />
        		</div>
 
-       		<@kk.找主表字段 "项目名称"/>
+       		<@字段库.找主表字段 "项目名称"/>
        		<div class="input-group" style="">
-            <p class="input-group-addon">${kk.字段.content}：	             	
-            </p> <@kk.ifTextZhuBiao kk.字段 />
+            <p class="input-group-addon">${字段库.字段.content}：	             	
+            </p> <@字段库.ifTextZhuBiao 字段库.字段 />
        		</div>
-       		<@kk.找主表字段 "客户单位"/>
+       		<@字段库.找主表字段 "客户单位"/>
        		<div class="input-group" style="">
-            <p class="input-group-addon">${kk.字段.content}：	             	
-            </p> <@kk.ifTextZhuBiao kk.字段 />
+            <p class="input-group-addon">${字段库.字段.content}：	             	
+            </p> <@字段库.ifTextZhuBiao 字段库.字段 />
        		</div>       		
 		</div>
 	</div>
@@ -46,9 +51,9 @@
 			<div class="col-xs-3 input-group" style="float:left">
             <p class="input-group-addon">${po.content}：</p>            
             <#if po.show_type=='text'>
-				<@kk.ifTextZhuBiao po/>
+				<@字段库.ifTextZhuBiao po/>
 			<#else>
-				<@kk.ifListZhuBiao po/>
+				<@字段库.ifListZhuBiao po/>
 			</#if>
        		</div>			
 		</#if>	
@@ -73,9 +78,9 @@
 				<div class="input-group" style="float:left;width:25%">
 	            <p class="input-group-addon">${po.content}：</p>            
 	            <#if po.show_type=='text'>
-					<@kk.ifTextZhuBiao po/>
+					<@字段库.ifTextZhuBiao po/>
 				<#else>
-					<@kk.ifListZhuBiao po/>
+					<@字段库.ifListZhuBiao po/>
 				</#if>
 	       		</div>			
 			</#if>	
@@ -97,9 +102,9 @@
 			<div class="input-group" style="float:left;width:25%">
 	            <p class="input-group-addon">${subTableField.content!?html}：</p>            
 	            <#if subTableField.show_type=='text'>
-					<@kk.ifText subTableField sub subTableData/>
+					<@字段库.ifText subTableField sub subTableData/>
 				<#else>
-					<@kk.ifList subTableField sub subTableData/>
+					<@字段库.ifList subTableField sub subTableData/>
 				</#if>
 	   		</div>		
 		</#list>	
@@ -120,9 +125,9 @@
 			<div class="input-group" style="float:left;width:25%">
 	            <p class="input-group-addon">${subTableField.content!?html}：</p>            
 	            <#if subTableField.show_type=='text'>
-					<@kk.ifText subTableField sub subTableData/>
+					<@字段库.ifText subTableField sub subTableData/>
 				<#else>
-					<@kk.ifList subTableField sub subTableData/>
+					<@字段库.ifList subTableField sub subTableData/>
 				</#if>
 	   		</div>		
 		</#list>	
@@ -143,16 +148,16 @@
 			<div class="input-group" style="float:left;width:25%">
 	            <p class="input-group-addon">${subTableField.content!?html}：</p>            
 	            <#if subTableField.show_type=='text'>
-					<@kk.ifText subTableField sub subTableData/>
+					<@字段库.ifText subTableField sub subTableData/>
 				<#else>
-					<@kk.ifList subTableField sub subTableData/>
+					<@字段库.ifList subTableField sub subTableData/>
 				</#if>
 	   		</div>		
 		</#list>	
 	</div>
 
 	<div class="row form-wrapper" style=";">
-		<p class="标题">材质要求</p>	
+		<div style="text-align:center;"><p class="标题" style="display:inline;">材质要求</p></div>	
 		<#assign sub="NSC数据表_材质">
 		<#if data['${sub}']??> <#assign subTableData=data['${sub}'][0]> 
 			 <#else> <#assign subTableData={}> 
@@ -166,9 +171,9 @@
 			<div class="input-group" style="float:left;width:25%">
 	            <p class="input-group-addon">${subTableField.content!?html}：</p>            
 	            <#if subTableField.show_type=='text'>
-					<@kk.ifText subTableField sub subTableData/>
+					<@字段库.ifText subTableField sub subTableData/>
 				<#elseif subTableField.show_type=='list'>
-					<@kk.ifList subTableField sub subTableData/>
+					<@字段库.ifList subTableField sub subTableData/>
 				<#else>
 					——————其他字段——————
 				</#if>
@@ -177,7 +182,7 @@
 		<#list field['${sub}'].fieldAreaList as subTableField>
 			<div class="input-group" style="float:left;width:100%;overflow:visible">
 	            <p class="input-group-addon">${subTableField.content!?html}：</p>            
-	            <@kk.textarea subTableField sub subTableData/>
+	            <@字段库.textarea subTableField sub subTableData/>
 	   		</div>	
 	  	</#list>	
 	</div>
@@ -197,22 +202,22 @@
 			<#if (subTableField_index>=0)&&(subTableField_index<=6) >		
 				<div class="input-group" style="float:left;width:20%">
 		            <p class="input-group-addon">${subTableField.content!?html}：</p>
-		            <#assign 有无字段名称="有无_"+subTableField.field_name><@kk.找字段 sub 有无字段名称/>
+		            <#assign 有无字段名称="有无_"+subTableField.field_name><@字段库.找字段 sub 有无字段名称/>
 		            <span class="input-group-addon">
-		            <@kk.ifcheckbox kk.字段 sub subTableData "有"/> 
+		            <@字段库.ifcheckbox 字段库.字段 sub subTableData "有"/> 
 		            </span>	            		            
-		            <@kk.ifText subTableField sub subTableData/>					
+		            <@字段库.ifText subTableField sub subTableData/>					
 		   		</div>
 	   		<#elseif subTableField.field_name?matches("单价|总价")>
 	   			<div class="input-group" style="float:left;width:20%">
 	            <p class="input-group-addon">${subTableField.content!?html}：</p>            
-					<@kk.ifText subTableField sub subTableData/>
+					<@字段库.ifText subTableField sub subTableData/>
 	   			</div>			   			
 	   		<#elseif subTableField.show_type=='radio'>
 	   			<div class="input-group" style="float:left;width:50%">
 	            <p class="input-group-addon">${subTableField.content!?html}：</p>            
 					<div type="text" class="form-control" >
-					<@kk.ifradio subTableField sub subTableData/>
+					<@字段库.ifradio subTableField sub subTableData/>
 					</div>
 	   			</div>
 	   		</#if>		
@@ -220,7 +225,7 @@
 		<#list field['${sub}'].fieldAreaList as subTableField>
 			<div class="input-group" style="float:left;width:100%;overflow:visible">
 	            <p class="input-group-addon">${subTableField.content!?html}：</p>            
-	            <@kk.textarea subTableField sub subTableData/>
+	            <@字段库.textarea subTableField sub subTableData/>
 	   		</div>	
 	  	</#list>	
 	</div>
@@ -230,9 +235,9 @@
 			<#if po.field_name?matches("销售人员|技术支持")>		
 				<div class="input-group" style="float:left;width:35%">
 		            <p class="input-group-addon">${po.content!?html}：</p>
-		            <@kk.ifTextZhuBiao po/> 
-		            <#assign 字段名称=po.field_name+"日期"><@kk.找主表字段 字段名称/>		                        		            
-		            <@kk.ifdateZhuBiao kk.字段/>					
+		            <@字段库.ifTextZhuBiao po/> 
+		            <#assign 字段名称=po.field_name+"日期"><@字段库.找主表字段 字段名称/>		                        		            
+		            <@字段库.ifdateZhuBiao 字段库.字段/>					
 		   		</div>
 	   		</#if>		
 		</#list>	

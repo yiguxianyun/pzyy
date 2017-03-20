@@ -20,8 +20,15 @@
 	<li>外网地址：http://113.240.240.142:8069/nf/</li>
 	<li>局域网地址：http://192.168.40.235:8069/nf/  &nbsp;&nbsp;&nbsp;&nbsp;或者 http://yk2:8069/nf/</li>
 	<li>支持浏览器：Google、360安全浏览器8.1以上</li>
-<!-- 	<br> -->
-	<li><a href="演示文件.jsp" target="_blank">演示文件→</a></li>
+	<li>演示文件： 
+		 <a href="ftp://113.240.240.142:7777/%E6%BC%94%E7%A4%BA%E6%96%87%E4%BB%B6" target="_blank">（外网→）</a>
+		 <a href="ftp://192.168.40.235:7777/%E6%BC%94%E7%A4%BA%E6%96%87%E4%BB%B6" target="_blank">（内网→）</a>
+	</li>
+	<br>
+	<li>市场部共享资料： 
+		 <a href="ftp://113.240.240.142:7777/" target="_blank">（外网→）</a>
+		 <a href="ftp://192.168.40.235:7777/" target="_blank">（内网→）</a>
+	</li>
 </ul>
 
 

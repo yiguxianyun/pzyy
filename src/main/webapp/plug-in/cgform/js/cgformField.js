@@ -64,9 +64,9 @@ function initData() {
 			getDataHanlder);
 	$.get("cgFormIndexController.do?getIndexList&id=" + $("#id").val(),
 			getDataHanlderIndex);
-	$('.t_table').height($(window).height()-300);
+	$('.t_table').height($(window).height()-400);
 	$(window).resize(function(){
-		$('.t_table').height($(window).height()-300);
+		$('.t_table').height($(window).height()-400);
 	});
 	
 }

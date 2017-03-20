@@ -1,4 +1,4 @@
-<#import "online/template/ledefault/html/lib_kk.ftl" as kk>
+<#import "/online/template/ledefault/html/lib_kk.ftl" as kk>
 <#setting number_format="0.#####################">
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -413,7 +413,7 @@
 	
 	if(location.href.indexOf("mode=read")!=-1){
 		//查看模式控件禁用
-		$("#formobj").find(":input").attr("disabled","disabled");
+		$("#formobj").find(":input").attr({"readonly":true});
 	}
 	if(location.href.indexOf("mode=onbutton")!=-1){
 		//其他模式显示提交按钮

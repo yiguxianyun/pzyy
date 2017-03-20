@@ -77,7 +77,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 	 */
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
 		String requestPath = ResourceUtil.getRequestPath(request);// 用户访问的资源地址
-		//logger.info("-----authInterceptor----requestPath------"+requestPath);
+		//logger.info("-----authInterceptor----requestPath------"+requestPath);		
+		requestPath=java.net.URLDecoder.decode(requestPath, "UTF-8");
+		
 		HttpSession session = ContextHolderUtils.getSession();
 		Client client = ClientManager.getInstance().getClient(session.getId());
 		if(client == null){ 
@@ -117,7 +119,13 @@ public class AuthInterceptor implements HandlerInterceptor {
 				if(requestPath.equals("cgFormBuildController.do?goDatilFtlForm")) {
 					requestPath += "&tableName=" +  request.getParameter("tableName");
 				}
-
+				
+				if(requestPath.equals("列表.do?datagrid")) {
+					requestPath += "&configId=" +  request.getParameter("configId");
+				}
+				if(requestPath.equals("列表.do?list")) {
+					requestPath += "&id=" +  request.getParameter("id");
+				}
 				//这个地方用全匹配？应该是模糊查询吧
 				//TODO
 

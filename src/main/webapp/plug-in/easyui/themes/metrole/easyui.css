@@ -1026,10 +1026,12 @@ a:hover.l-btn-disabled {
   white-space: nowrap;
   word-wrap: normal;
   overflow: hidden;
-  height: 33px;
-  line-height: 34px;
+  height: 25px;
+  line-height:26px;
   /*font-weight: normal; */
-  font-size: 12px;
+  font-size: 14px;
+/*   display:table-cell; */
+/*   vertical-align: middle; */
 }
 .datagrid-cell-group {
   text-align: center;

@@ -86,7 +86,7 @@ function update(title,url, id,width,height,isRestful) {
  */
 $(function(){
 	if(location.href.indexOf("load=detail")!=-1){
-		$(":input").attr("disabled","true");
+		$(":input").attr({"readonly":true});
 	}
 });
 

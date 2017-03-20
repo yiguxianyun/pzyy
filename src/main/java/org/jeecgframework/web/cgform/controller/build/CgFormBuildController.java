@@ -43,6 +43,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import freemarker.ext.jsp.TaglibFactory;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
@@ -182,15 +183,17 @@ public class CgFormBuildController extends BaseController {
 	    	pushFiles(data, id);
 	    	pushImages(data, id);
 			String content =null;
+			
+			data.put("req", request);
+//			data.put("Session", request.getSession());
+//			data.put("JspTaglibs", new TaglibFactory(request.getSession()
+//			.getServletContext()));
+						
 			response.setContentType("text/html;charset=utf-8");
-
 			String urlTemplateName = request.getParameter("olstylecode");
-
 			if(oConvertUtils.isEmpty(urlTemplateName)){
 				urlTemplateName = (String) request.getAttribute("olstylecode");
 			}
-
-			
 			if(StringUtils.isNotBlank(urlTemplateName)){
 				data.put("this_olstylecode",urlTemplateName);
 				LogUtil.debug("-------------urlTemplateName-----------"+urlTemplateName);
@@ -201,7 +204,6 @@ public class CgFormBuildController extends BaseController {
 				LogUtil.debug("-------------formTemplate-----------"+head.getFormTemplate());
 				content=getTableTemplate(templateName,request,data);
 			}
-
 			response.getWriter().print(content);
 			response.getWriter().flush();
 			long end = System.currentTimeMillis();
@@ -225,6 +227,7 @@ public class CgFormBuildController extends BaseController {
 	 * @param dataMap
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	private String getUrlTemplate(String templateName,TemplateUtil.TemplateType templateType,Map dataMap){
 		String content=null;
 		CgformTemplateEntity entity=cgformTemplateService.findByCode(templateName);

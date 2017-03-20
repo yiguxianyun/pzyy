@@ -81,6 +81,10 @@ input,select{
 .次要按钮{
 	background-color:#7698b5;
 }
+.工作流按钮{
+	background-color:green;
+	margin:15px 10px;
+}
 .隔开{
 	margin-left:15px;
 }

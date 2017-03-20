@@ -1,66 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/context/mytags.jsp"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<style type="text/css">
-	/* li 不换行，宽度根据内容自适应，通过 float 实现 */
-	.ul_one {list-style: none;margin: 0px;padding: 0px;}
-	.ul_one li {float: left;background-color: #ccd;margin: 0px 20px 10px 0px;}
-	
-	/* li 不换行，宽度固定 */
-	.ul_two {list-style: none;margin: 0px;padding: 0px;}
-	.ul_two li {float: left;width: 100px;margin: 0px 20px 10px 0px;background-color: #ccd;overflow: hidden; line-height:1.6em;}
-	
-	/* li 不换行，宽度根据内容自适应，通过 display:inline 实现 */
-	.ul_three {list-style: none;margin: 0px;padding: 0px;}
-	.ul_three li {display:inline;background-color: #ccd;margin: 0px 20px 10px 0px;}
-	
-	.clear {clear: both;}
-</style>
+    <link rel="stylesheet" type="text/css" href="plug-in/lhgDialog/skins/default.css">
+    <script type="text/javascript" src="plug-in/jquery/jquery-1.8.3.js"></script>
+    <script type=text/javascript src="plug-in/clipboard/ZeroClipboard.js"></script>
+    <script type="text/javascript" src="plug-in/lhgDialog/lhgdialog.min.js"></script>
+    <script>
+        $(function(){
+            var clip = new ZeroClipboard.Client();
+            clip.setHandCursor( true );
+            clip.addEventListener('complete', function(client, text){
+                alert("复制成功");
+                frameElement.api.close();
+            });
+			var url = "${url}&id=${title}";
+            clip.setText(url);
+            $("#menuLink").val(url);
+            clip.glue('copyBtn');
+            $("#closeBtn").click(function(){
+                frameElement.api.close();
+            });
+        });
+    </script>
 </head>
 <body>
-	<ul class="ul_one">
-		<li>1ssssssssssssssssssssssss</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-	</ul>
-	<div class="clear"></div>
-	<hr />
-	<ul class="ul_two">
-		<li>1ssssssssssssssssssssssss</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-	</ul>
-	<div class="clear"></div>
-	<hr />
-	<ul class="ul_three">
-		<li>1ssssssssssssssssssssssss</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-	</ul>
+    <div>
+        <input id='menuLink'  type='text' style="width:380px;" disabled="disabled"/>
+    </div>
+    <div class="ui_buttons" style="padding-left: 240px;">
+        <input type="button" id="copyBtn" value="复制" class="ui_state_highlight">
+        <input type="button" id="closeBtn" value="关闭" onclick='close();'>
+    </div>
 </body>
 </html>

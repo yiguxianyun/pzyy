@@ -52,7 +52,7 @@ public class ${entityName}ServiceImpl extends CommonServiceImpl implements ${ent
 				<#if key?lower_case?index_of("${jeecg_table_id}")!=-1>
 				${sub.entityName?uncap_first}.set${subFieldMeta1[key]?cap_first}(${entityName?uncap_first}.get${jeecg_table_id?cap_first}());
 				<#else>
-				${sub.entityName?uncap_first}.set${subFieldMeta1[key]?cap_first}(${entityName?uncap_first}.get${key}());
+				${sub.entityName?uncap_first}.set${subFieldMeta1[key]?cap_first}(${entityName?uncap_first}.getId());
 				</#if>
 				</#list>
 				this.save(${sub.entityName?uncap_first});
@@ -74,7 +74,7 @@ public class ${entityName}ServiceImpl extends CommonServiceImpl implements ${ent
 		    <#if key?lower_case?index_of("${jeecg_table_id}")!=-1>
 		Object ${jeecg_table_id}${sub_index} = ${entityName?uncap_first}.get${jeecg_table_id?cap_first}();
 		    <#else>
-		Object ${key?uncap_first}${sub_index} = ${entityName?uncap_first}.get${key}();
+		Object ${key?uncap_first}${sub_index} = ${entityName?uncap_first}.getId();
 		    </#if>
 		    </#list>
 	    </#list>
@@ -115,7 +115,7 @@ public class ${entityName}ServiceImpl extends CommonServiceImpl implements ${ent
 					    <#if key?lower_case?index_of("${jeecg_table_id}")!=-1>
 					${sub.entityName?uncap_first}.set${subFieldMeta1[key]?cap_first}(${entityName?uncap_first}.get${jeecg_table_id?cap_first}());
 					    <#else>
-					${sub.entityName?uncap_first}.set${subFieldMeta1[key]?cap_first}(${entityName?uncap_first}.get${key}());
+					${sub.entityName?uncap_first}.set${subFieldMeta1[key]?cap_first}(${entityName?uncap_first}.getId());
 					    </#if>
 					 </#list>
 					this.save(${sub.entityName?uncap_first});
@@ -138,7 +138,7 @@ public class ${entityName}ServiceImpl extends CommonServiceImpl implements ${ent
 		    <#if key?lower_case?index_of("${jeecg_table_id}")!=-1>
 		Object ${jeecg_table_id}${sub_index} = ${entityName?uncap_first}.get${jeecg_table_id?cap_first}();
 		    <#else>
-		Object ${key?uncap_first}${sub_index} = ${entityName?uncap_first}.get${key}();
+		Object ${key?uncap_first}${sub_index} = ${entityName?uncap_first}.getId();
 		    </#if>
 		    </#list>
 	    </#list>
